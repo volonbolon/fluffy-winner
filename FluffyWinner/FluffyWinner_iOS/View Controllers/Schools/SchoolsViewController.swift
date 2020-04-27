@@ -8,12 +8,19 @@
 
 import UIKit
 import FluffyWinnerUIKit
+import FluffyWinnerKit
 
 public class SchoolsViewController: NiblessViewController {
     let userInterface: SchoolsRootView
-    
-    public init(userInterface: SchoolsRootView) {
+    let refreshSchoolsFactory: RefreshSchoolsUseCaseFactory
+    let observable: Observable<[School]>
+
+    public init(userInterface: SchoolsRootView,
+                refreshSchoolsFactory: RefreshSchoolsUseCaseFactory,
+                observable: Observable<[School]>) {
         self.userInterface = userInterface
+        self.observable = observable
+        self.refreshSchoolsFactory = refreshSchoolsFactory
 
         super.init()
     }
@@ -27,8 +34,18 @@ public class SchoolsViewController: NiblessViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = NSLocalizedString("Schools", comment: "Schools")
+
         self.userInterface.setRegion(latitude: 40.7128,
                                      longitude: -73.97105,
                                      span: 10_000)
+    }
+}
+
+extension SchoolsViewController: SchoolsUXResponder {
+    func refreshSchools() {
+        let factory = self.refreshSchoolsFactory
+        let useCase = factory.makeRefreshSchoolsUseCase(observable: self.observable)
+        useCase.start()
     }
 }

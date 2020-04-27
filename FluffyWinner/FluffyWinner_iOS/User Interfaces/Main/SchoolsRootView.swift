@@ -9,11 +9,14 @@
 import UIKit
 import FluffyWinnerUIKit
 import MapKit
+import FluffyWinnerKit
 
 public class SchoolsRootView: NiblessView {
     private static let pinIdentifier = "pin"
     private var hierarchyNotReady = true
     private var mapLoaded = false
+    private let viewModel: SchoolsViewModel
+    private var schools: [School] = []
 
     var mapView: MKMapView = {
         let mapView = MKMapView(frame: .zero)
@@ -25,6 +28,12 @@ public class SchoolsRootView: NiblessView {
         return mapView
     }()
 
+    init(viewModel: SchoolsViewModel) {
+        self.viewModel = viewModel
+
+        super.init(frame: .zero)
+    }
+
     public override func didMoveToWindow() {
         super.didMoveToWindow()
 
@@ -34,6 +43,7 @@ public class SchoolsRootView: NiblessView {
 
         self.constructHierarchy()
         self.activateConstraints()
+        self.bindViewModel()
 
         self.backgroundColor = UIColor.white
 
@@ -51,6 +61,27 @@ public class SchoolsRootView: NiblessView {
 }
 
 extension SchoolsRootView { // MARK: - Helpers
+    fileprivate func bindViewModel() {
+        self.viewModel.observable?.bind { schools in
+            self.schools = schools
+            self.dropPins(schools: self.schools)
+        }
+    }
+
+    fileprivate func dropPins(schools: [School]) {
+        guard self.mapLoaded else {
+            return
+        }
+
+        schools.forEach { school in
+            if let location = school.coordinate {
+                let pin = MKPointAnnotation()
+                pin.coordinate = location
+                pin.title = school.name
+                self.mapView.addAnnotation(pin)
+            }
+        }
+    }
     fileprivate func constructHierarchy() {
         self.addSubview(self.mapView)
         self.mapView.delegate = self
@@ -83,6 +114,7 @@ extension SchoolsRootView: MKMapViewDelegate {
 
     public func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         self.mapLoaded = true
+        self.viewModel.uxResponder?.refreshSchools()
     }
 
     public func mapView(_ mapView: MKMapView,

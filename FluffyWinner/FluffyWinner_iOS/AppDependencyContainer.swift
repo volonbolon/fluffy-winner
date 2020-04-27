@@ -7,14 +7,37 @@
 //
 
 import UIKit
+import FluffyWinnerKit
 
 public struct AppDependencyContainer {
     public init() {}
 
-    public func makeMainViewController() -> SchoolsViewController {
-        let userInterface = SchoolsRootView()
-        let viewController = SchoolsViewController(userInterface: userInterface)
+    private var remoteAPI: NetworkAPI {
+        return FakeNetworkAPI()
+    }
+
+    public func makeRootViewController() -> RootViewController {
+        let schoolsViewController = self.makeSchoolsViewController()
+        let viewController = RootViewController(schoolsViewController: schoolsViewController)
 
         return viewController
+    }
+
+    public func makeSchoolsViewController() -> SchoolsViewController {
+        let observable = Observable<[School]>([])
+        let viewModel = SchoolsViewModel(observable: observable)
+        let userInterface = SchoolsRootView(viewModel: viewModel)
+        let viewController = SchoolsViewController(userInterface: userInterface,
+                                                   refreshSchoolsFactory: self,
+                                                   observable: observable)
+        viewModel.uxResponder = viewController
+        return viewController
+    }
+}
+
+extension AppDependencyContainer: RefreshSchoolsUseCaseFactory {
+    public func makeRefreshSchoolsUseCase(observable: Observable<[School]>) -> UseCase {
+        let useCase = RefreshSchoolsUseCase(remoteAPI: self.remoteAPI, observable: observable)
+        return useCase
     }
 }

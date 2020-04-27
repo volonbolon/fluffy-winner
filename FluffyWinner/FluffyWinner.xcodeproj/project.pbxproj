@@ -26,6 +26,8 @@
 		79DD96C824576F94009DDA80 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96C724576F94009DDA80 /* NiblessView.swift */; };
 		79DD96CB24576FB4009DDA80 /* NiblessTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96CA24576FB4009DDA80 /* NiblessTableView.swift */; };
 		79DD96CD24576FC7009DDA80 /* NiblessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96CC24576FC7009DDA80 /* NiblessNavigationController.swift */; };
+		79DD96CF245770C8009DDA80 /* SchoolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96CE245770C8009DDA80 /* SchoolsViewController.swift */; };
+		79DD96D62457738A009DDA80 /* SchoolsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96D52457738A009DDA80 /* SchoolsRootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		79DD96C724576F94009DDA80 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
 		79DD96CA24576FB4009DDA80 /* NiblessTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessTableView.swift; sourceTree = "<group>"; };
 		79DD96CC24576FC7009DDA80 /* NiblessNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessNavigationController.swift; sourceTree = "<group>"; };
+		79DD96CE245770C8009DDA80 /* SchoolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsViewController.swift; sourceTree = "<group>"; };
+		79DD96D52457738A009DDA80 /* SchoolsRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsRootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +226,8 @@
 		79DD968224576D8B009DDA80 /* FluffyWinner_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				79DD96A124576EF6009DDA80 /* ViewControllers */,
+				79DD96D32457735C009DDA80 /* User Interfaces */,
+				79DD96A124576EF6009DDA80 /* View Controllers */,
 				79DD968324576D8B009DDA80 /* FluffyWinner_iOS.h */,
 				79DD968424576D8B009DDA80 /* Info.plist */,
 				79DD969F24576E06009DDA80 /* AppDependencyContainer.swift */,
@@ -239,11 +244,12 @@
 			path = FluffyWinner_iOSTests;
 			sourceTree = "<group>";
 		};
-		79DD96A124576EF6009DDA80 /* ViewControllers */ = {
+		79DD96A124576EF6009DDA80 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				79DD96D22457731C009DDA80 /* Schools */,
 			);
-			path = ViewControllers;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		79DD96A824576F30009DDA80 /* FluffyWinnerUIKit */ = {
@@ -274,6 +280,30 @@
 				79DD96CC24576FC7009DDA80 /* NiblessNavigationController.swift */,
 			);
 			path = "Nibless Components";
+			sourceTree = "<group>";
+		};
+		79DD96D22457731C009DDA80 /* Schools */ = {
+			isa = PBXGroup;
+			children = (
+				79DD96CE245770C8009DDA80 /* SchoolsViewController.swift */,
+			);
+			path = Schools;
+			sourceTree = "<group>";
+		};
+		79DD96D32457735C009DDA80 /* User Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				79DD96D424577372009DDA80 /* Main */,
+			);
+			path = "User Interfaces";
+			sourceTree = "<group>";
+		};
+		79DD96D424577372009DDA80 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				79DD96D52457738A009DDA80 /* SchoolsRootView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -536,6 +566,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DD96D62457738A009DDA80 /* SchoolsRootView.swift in Sources */,
+				79DD96CF245770C8009DDA80 /* SchoolsViewController.swift in Sources */,
 				79DD96A024576E06009DDA80 /* AppDependencyContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

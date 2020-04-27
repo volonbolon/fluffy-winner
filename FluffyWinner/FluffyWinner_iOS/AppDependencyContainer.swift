@@ -11,7 +11,10 @@ import UIKit
 public struct AppDependencyContainer {
     public init() {}
 
-    public func makeMainViewController() -> UIViewController {
+    public func makeMainViewController() -> SchoolsViewController {
+        let userInterface = SchoolsRootView()
+        let viewController = SchoolsViewController(userInterface: userInterface)
 
+        return viewController
     }
 }

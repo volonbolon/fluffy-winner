@@ -22,6 +22,10 @@
 		79DD96B924576F30009DDA80 /* FluffyWinnerUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DD96A924576F30009DDA80 /* FluffyWinnerUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79DD96BC24576F30009DDA80 /* FluffyWinnerUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DD96A724576F30009DDA80 /* FluffyWinnerUIKit.framework */; };
 		79DD96BD24576F30009DDA80 /* FluffyWinnerUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79DD96A724576F30009DDA80 /* FluffyWinnerUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		79DD96C624576F7E009DDA80 /* NiblessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96C524576F7E009DDA80 /* NiblessViewController.swift */; };
+		79DD96C824576F94009DDA80 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96C724576F94009DDA80 /* NiblessView.swift */; };
+		79DD96CB24576FB4009DDA80 /* NiblessTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96CA24576FB4009DDA80 /* NiblessTableView.swift */; };
+		79DD96CD24576FC7009DDA80 /* NiblessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD96CC24576FC7009DDA80 /* NiblessNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +117,10 @@
 		79DD96AF24576F30009DDA80 /* FluffyWinnerUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluffyWinnerUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DD96B624576F30009DDA80 /* FluffyWinnerUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluffyWinnerUIKitTests.swift; sourceTree = "<group>"; };
 		79DD96B824576F30009DDA80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79DD96C524576F7E009DDA80 /* NiblessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessViewController.swift; sourceTree = "<group>"; };
+		79DD96C724576F94009DDA80 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
+		79DD96CA24576FB4009DDA80 /* NiblessTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessTableView.swift; sourceTree = "<group>"; };
+		79DD96CC24576FC7009DDA80 /* NiblessNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +249,7 @@
 		79DD96A824576F30009DDA80 /* FluffyWinnerUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				79DD96C424576F6B009DDA80 /* Nibless Components */,
 				79DD96A924576F30009DDA80 /* FluffyWinnerUIKit.h */,
 				79DD96AA24576F30009DDA80 /* Info.plist */,
 			);
@@ -254,6 +263,17 @@
 				79DD96B824576F30009DDA80 /* Info.plist */,
 			);
 			path = FluffyWinnerUIKitTests;
+			sourceTree = "<group>";
+		};
+		79DD96C424576F6B009DDA80 /* Nibless Components */ = {
+			isa = PBXGroup;
+			children = (
+				79DD96C524576F7E009DDA80 /* NiblessViewController.swift */,
+				79DD96C724576F94009DDA80 /* NiblessView.swift */,
+				79DD96CA24576FB4009DDA80 /* NiblessTableView.swift */,
+				79DD96CC24576FC7009DDA80 /* NiblessNavigationController.swift */,
+			);
+			path = "Nibless Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +437,7 @@
 					};
 					79DD96A624576F30009DDA80 = {
 						CreatedOnToolsVersion = 11.4.1;
+						LastSwiftMigration = 1140;
 					};
 					79DD96AE24576F30009DDA80 = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -531,6 +552,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DD96CD24576FC7009DDA80 /* NiblessNavigationController.swift in Sources */,
+				79DD96C624576F7E009DDA80 /* NiblessViewController.swift in Sources */,
+				79DD96CB24576FB4009DDA80 /* NiblessTableView.swift in Sources */,
+				79DD96C824576F94009DDA80 /* NiblessView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +915,7 @@
 		79DD96BF24576F30009DDA80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -907,6 +933,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Volonbolon.FluffyWinnerUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -917,6 +944,7 @@
 		79DD96C024576F30009DDA80 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

@@ -37,14 +37,15 @@ public struct AppDependencyContainer {
 
     public func makeSchoolDetailViewController(school: School) -> SchoolDetailsViewController {
         let observable = Observable<Sat?>(nil)
-        let viewModel = SchoolDetailsViewModel(school: school)
+        let viewModel = SchoolDetailsViewModel(school: school, observable: observable)
         let datasource = SchoolDetailsDatasource(infoCellIndentifier: SchoolDetailsView.SchoolDetailsInfoCellIndentifier,
                                                  satCellIdentifier: SchoolDetailsView.SchoolDetailsSatCellIndentifier,
-                                                 satObservable: observable,
                                                  viewModel: viewModel)
         let userInterface = SchoolDetailsView(datasource: datasource, viewModel: viewModel)
         let viewController = SchoolDetailsViewController(school: school,
-                                                         userInterface: userInterface)
+                                                         userInterface: userInterface,
+                                                         observable: observable,
+                                                         retrieveSatUseCaseFactory: self)
 
         return viewController
     }
@@ -53,6 +54,15 @@ public struct AppDependencyContainer {
 extension AppDependencyContainer: RefreshSchoolsUseCaseFactory {
     public func makeRefreshSchoolsUseCase(observable: Observable<[School]>) -> UseCase {
         let useCase = RefreshSchoolsUseCase(remoteAPI: self.remoteAPI, observable: observable)
+        return useCase
+    }
+}
+
+extension AppDependencyContainer: RetrieveSATsUseCaseFactory {
+    public func makeRetrieveSATsUseCase(school: School, observable: Observable<Sat?>) -> UseCase {
+        let useCase = RetrieveSATsUseCase(remoteAPI: self.remoteAPI,
+                                          school: school,
+                                          observable: observable)
         return useCase
     }
 }

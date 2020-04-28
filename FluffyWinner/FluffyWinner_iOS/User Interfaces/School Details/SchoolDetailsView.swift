@@ -25,6 +25,10 @@ class SchoolDetailsView: NiblessTableView {
 
         self.register(UITableViewCell.self,
                       forCellReuseIdentifier: SchoolDetailsView.SchoolDetailsInfoCellIndentifier)
+        self.register(SchoolDetailsSatCell.self,
+                      forCellReuseIdentifier: SchoolDetailsView.SchoolDetailsSatCellIndentifier)
+        self.rowHeight = UITableView.automaticDimension
+        self.estimatedRowHeight = 44
 
         self.dataSource = datasource
     }
@@ -32,6 +36,21 @@ class SchoolDetailsView: NiblessTableView {
     public override func didMoveToWindow() {
         super.didMoveToWindow()
 
+        self.bindViewModel()
+    }
+}
 
+extension SchoolDetailsView { // MARK: - Helpers
+    fileprivate func bindViewModel() {
+        self.viewModel.observable.bind { sat in
+            let satSection = IndexSet(integer: 1)
+            if sat != nil {
+                self.insertSections(satSection, with: .automatic)
+            } else {
+                if self.numberOfSections == 2 {
+                    self.deleteSections(satSection, with: .automatic)
+                }
+            }
+        }
     }
 }

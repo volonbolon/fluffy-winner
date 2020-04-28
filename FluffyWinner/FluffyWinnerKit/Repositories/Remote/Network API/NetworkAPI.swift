@@ -14,7 +14,10 @@ public enum NetworkAPIError: Error {
 }
 
 public typealias GetSchoolsCompletionHandler = (Either<NetworkAPIError, [School]>) -> Void
+public typealias GetSATsCompletionHandler = (Either<NetworkAPIError, Sat>) -> Void
 
 public protocol NetworkAPI {
     func getSchools(completionHandler: @escaping GetSchoolsCompletionHandler)
+    func getSATs(school: School,
+                 completionHandler: @escaping GetSATsCompletionHandler)
 }

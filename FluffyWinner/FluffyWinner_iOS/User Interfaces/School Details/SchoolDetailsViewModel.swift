@@ -12,9 +12,11 @@ import FluffyWinnerKit
 public struct SchoolDetailsViewModel {
     public let school: School
     public let schoolDigest: [String]
+    public let observable: Observable<Sat?>
 
-    init(school: School) {
+    init(school: School, observable: Observable<Sat?>) {
         self.school = school
+        self.observable = observable
 
         let digest = [
             school.name,

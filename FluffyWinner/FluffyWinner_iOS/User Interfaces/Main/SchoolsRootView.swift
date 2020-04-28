@@ -82,6 +82,7 @@ extension SchoolsRootView { // MARK: - Helpers
             }
         }
     }
+    
     fileprivate func constructHierarchy() {
         self.addSubview(self.mapView)
         self.mapView.delegate = self

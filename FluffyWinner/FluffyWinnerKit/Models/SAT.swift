@@ -11,42 +11,65 @@ import Foundation
 public struct Sat: Equatable, Codable {
     public let id: String
     public let name: String
-    public let numOfSatTestTakers: String
-    private let rawSatCriticalReadingAvgScore: String
-    private let rawSatMathAvgScore: String
-    private let rawSatWritingAvgScore: String
+    public let numOfSatTestTakers: Int
+    public let satCriticalReadingAvgScore: Int
+    public let satMathAvgScore: Int
+    public let satWritingAvgScore: Int
 
-    public var satCriticalReadingAvgScore: Int? {
-        guard let criticalReadingAvgScore = Int(self.rawSatCriticalReadingAvgScore) else {
-            return nil
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.id = try container.decode(String.self, forKey: CodingKeys.id)
+        self.name = try container.decode(String.self, forKey: CodingKeys.name)
+
+        // numOfSatTestTakers
+        let numOfSatTestTakersString = try container.decode(String.self,
+                                                            forKey: CodingKeys.numOfSatTestTakers)
+        guard let numOfSatTestTakers = Int(numOfSatTestTakersString) else {
+            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.numOfSatTestTakers],
+                                                debugDescription: "Could not parse json key to a Int object")
+            throw DecodingError.dataCorrupted(context)
         }
+        self.numOfSatTestTakers = numOfSatTestTakers
 
-        return criticalReadingAvgScore
-    }
-
-    public var satMathAvgScore: Int? {
-        guard let criticalReadingAvgScore = Int(self.rawSatMathAvgScore) else {
-            return nil
+        // satCriticalReadingAvgScore
+        let satCriticalReadingAvgScoreString = try container.decode(String.self,
+                                                                    forKey: CodingKeys.satCriticalReadingAvgScore)
+        guard let satCriticalReadingAvgScore = Int(satCriticalReadingAvgScoreString) else {
+            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.satCriticalReadingAvgScore],
+                                                debugDescription: "Could not parse json key to a Int object")
+            throw DecodingError.dataCorrupted(context)
         }
+        self.satCriticalReadingAvgScore = satCriticalReadingAvgScore
 
-        return criticalReadingAvgScore
-    }
-
-    public var satWritingAvgScore: Int? {
-        guard let criticalReadingAvgScore = Int(self.rawSatWritingAvgScore) else {
-            return nil
+        // satMathAvgScore
+        let satMathAvgScoreString = try container.decode(String.self,
+                                                         forKey: CodingKeys.satMathAvgScore)
+        guard let satMathAvgScore = Int(satMathAvgScoreString) else {
+            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.satMathAvgScore],
+                                                debugDescription: "Could not parse json key to a Int object")
+            throw DecodingError.dataCorrupted(context)
         }
+        self.satMathAvgScore = satMathAvgScore
 
-        return criticalReadingAvgScore
+        // satWritingAvgScore
+        let satWritingAvgScoreString = try container.decode(String.self,
+                                                            forKey: CodingKeys.satWritingAvgScore)
+        guard let satWritingAvgScore = Int(satWritingAvgScoreString) else {
+            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.satWritingAvgScore],
+                                                debugDescription: "Could not parse json key to a Int object")
+            throw DecodingError.dataCorrupted(context)
+        }
+        self.satWritingAvgScore = satWritingAvgScore
     }
 
     enum CodingKeys: String, CodingKey {
         case id = "dbn"
         case name = "school_name"
         case numOfSatTestTakers = "num_of_sat_test_takers"
-        case rawSatCriticalReadingAvgScore = "sat_critical_reading_avg_score"
-        case rawSatMathAvgScore = "sat_math_avg_score"
-        case rawSatWritingAvgScore = "sat_writing_avg_score"
+        case satCriticalReadingAvgScore = "sat_critical_reading_avg_score"
+        case satMathAvgScore = "sat_math_avg_score"
+        case satWritingAvgScore = "sat_writing_avg_score"
     }
 }
 

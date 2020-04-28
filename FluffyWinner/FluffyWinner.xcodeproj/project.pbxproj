@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79636BF124585558002FABD2 /* ViewController+ErrorPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BF024585558002FABD2 /* ViewController+ErrorPresentation.swift */; };
+		79636BF3245855CF002FABD2 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BF2245855CF002FABD2 /* ErrorMessage.swift */; };
+		79636BF5245860E6002FABD2 /* RetrieveSATsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BF4245860E6002FABD2 /* RetrieveSATsUseCase.swift */; };
+		79636BF724586E98002FABD2 /* SchoolDetailsSatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BF624586E98002FABD2 /* SchoolDetailsSatCell.swift */; };
 		79DD965B24576D74009DDA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD965A24576D74009DDA80 /* AppDelegate.swift */; };
 		79DD966424576D74009DDA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79DD966324576D74009DDA80 /* Assets.xcassets */; };
 		79DD966724576D74009DDA80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DD966524576D74009DDA80 /* LaunchScreen.storyboard */; };
@@ -141,6 +145,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		79636BF024585558002FABD2 /* ViewController+ErrorPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ErrorPresentation.swift"; sourceTree = "<group>"; };
+		79636BF2245855CF002FABD2 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		79636BF4245860E6002FABD2 /* RetrieveSATsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveSATsUseCase.swift; sourceTree = "<group>"; };
+		79636BF624586E98002FABD2 /* SchoolDetailsSatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsSatCell.swift; sourceTree = "<group>"; };
 		79DD965724576D74009DDA80 /* FluffyWinner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluffyWinner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DD965A24576D74009DDA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79DD966324576D74009DDA80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -258,6 +266,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79636BEF24585536002FABD2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				79636BF024585558002FABD2 /* ViewController+ErrorPresentation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		79DD964E24576D74009DDA80 = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +359,7 @@
 		79DD96A824576F30009DDA80 /* FluffyWinnerUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				79636BEF24585536002FABD2 /* Extensions */,
 				79DD96C424576F6B009DDA80 /* Nibless Components */,
 				79DD96A924576F30009DDA80 /* FluffyWinnerUIKit.h */,
 				79DD96AA24576F30009DDA80 /* Info.plist */,
@@ -457,6 +474,7 @@
 				79DD970224577CE6009DDA80 /* Either.swift */,
 				79DD970424577D05009DDA80 /* School.swift */,
 				79DD97212457C63F009DDA80 /* SAT.swift */,
+				79636BF2245855CF002FABD2 /* ErrorMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -483,6 +501,7 @@
 			children = (
 				79DD970D24578100009DDA80 /* RefreshSchoolsUseCase.swift */,
 				79DD970F2457811A009DDA80 /* UseCase.swift */,
+				79636BF4245860E6002FABD2 /* RetrieveSATsUseCase.swift */,
 			);
 			path = "Use Case";
 			sourceTree = "<group>";
@@ -517,6 +536,7 @@
 			children = (
 				79DD971D2457BD8A009DDA80 /* SchoolDetailsView.swift */,
 				79DD97232457C903009DDA80 /* SchoolDetailsViewModel.swift */,
+				79636BF624586E98002FABD2 /* SchoolDetailsSatCell.swift */,
 			);
 			path = "School Details";
 			sourceTree = "<group>";
@@ -860,6 +880,7 @@
 				79DD97202457C5EA009DDA80 /* SchoolDetailsDatasource.swift in Sources */,
 				79DD96CF245770C8009DDA80 /* SchoolsViewController.swift in Sources */,
 				79DD96D924577AD9009DDA80 /* RootViewController.swift in Sources */,
+				79636BF724586E98002FABD2 /* SchoolDetailsSatCell.swift in Sources */,
 				79DD96A024576E06009DDA80 /* AppDependencyContainer.swift in Sources */,
 				79DD971624579041009DDA80 /* SchoolsUXResponder.swift in Sources */,
 			);
@@ -878,6 +899,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79DD96CD24576FC7009DDA80 /* NiblessNavigationController.swift in Sources */,
+				79636BF124585558002FABD2 /* ViewController+ErrorPresentation.swift in Sources */,
 				79DD96C624576F7E009DDA80 /* NiblessViewController.swift in Sources */,
 				79DD96CB24576FB4009DDA80 /* NiblessTableView.swift in Sources */,
 				79DD96C824576F94009DDA80 /* NiblessView.swift in Sources */,
@@ -900,9 +922,11 @@
 				79DD970524577D05009DDA80 /* School.swift in Sources */,
 				79DD970924577D82009DDA80 /* FakeNetworkAPI.swift in Sources */,
 				79DD97132457815F009DDA80 /* Observable.swift in Sources */,
+				79636BF3245855CF002FABD2 /* ErrorMessage.swift in Sources */,
 				79DD97222457C63F009DDA80 /* SAT.swift in Sources */,
 				79DD97102457811A009DDA80 /* UseCase.swift in Sources */,
 				79DD970E24578100009DDA80 /* RefreshSchoolsUseCase.swift in Sources */,
+				79636BF5245860E6002FABD2 /* RetrieveSATsUseCase.swift in Sources */,
 				79DD970024577CA6009DDA80 /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

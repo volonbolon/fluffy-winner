@@ -29,6 +29,31 @@ public struct RemoteNetworkAPI: NetworkAPI {
         }
     }
 
+    fileprivate func parseSatData(_ data: Data, completionHandler: @escaping GetSATsCompletionHandler) {
+        do {
+            let jsonDecoder = JSONDecoder()
+            let satArray = try jsonDecoder.decode([Sat].self, from: data)
+            if let sat = satArray.first {
+                let result = Either<NetworkAPIError, Sat>.Right(sat)
+                DispatchQueue.main.async {
+                    completionHandler(result)
+                }
+            } else {
+                let parsingError = NetworkAPIError.unknown
+                let result = Either<NetworkAPIError, Sat>.Left(parsingError)
+                DispatchQueue.main.async {
+                    completionHandler(result)
+                }
+            }
+        } catch {
+            let parsingError = NetworkAPIError.parsingError
+            let result = Either<NetworkAPIError, Sat>.Left(parsingError)
+            DispatchQueue.main.async {
+                completionHandler(result)
+            }
+        }
+    }
+
     public func getSchools(completionHandler: @escaping GetSchoolsCompletionHandler) {
         func closureWithError(_ error: NetworkAPIError, completionHandler: @escaping GetSchoolsCompletionHandler) {
             let result = Either<NetworkAPIError, [School]>.Left(error)
@@ -79,9 +104,53 @@ public struct RemoteNetworkAPI: NetworkAPI {
     }
 
     public func getSATs(school: School, completionHandler: @escaping GetSATsCompletionHandler) {
+        func closureWithError(_ error: NetworkAPIError, completionHandler: @escaping GetSATsCompletionHandler) {
+            let result = Either<NetworkAPIError, Sat>.Left(error)
+            DispatchQueue.main.async {
+                completionHandler(result)
+            }
+        }
 
+        let sessionConfig = URLSessionConfiguration.default
+
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+
+        guard var URL = URL(string: "https://data.cityofnewyork.us/resource/f9bf-2cp4.json") else {return}
+        let URLParams = [
+            "dbn": school.id,
+        ]
+        URL = URL.appendingQueryParameters(URLParams)
+        var request = URLRequest(url: URL)
+        request.httpMethod = "GET"
+
+        request.addValue("2Bc7XcpsrWm459DzzHbCHLBkq", forHTTPHeaderField: "X-App-Token")
+
+        /* Start a new Task */
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if (error == nil) {
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    let error = NetworkAPIError.connectionError
+                    closureWithError(error, completionHandler: completionHandler)
+                  return
+                }
+                guard 200..<300 ~= httpResponse.statusCode else {
+                    let error = NetworkAPIError.connectionError
+                    closureWithError(error, completionHandler: completionHandler)
+                    return
+                }
+
+                if let data = data {
+                    self.parseSatData(data, completionHandler: completionHandler)
+                } else {
+                    let error = NetworkAPIError.parsingError
+                    closureWithError(error, completionHandler: completionHandler)
+                }
+            } else {
+                let error = NetworkAPIError.unknown
+                closureWithError(error, completionHandler: completionHandler)
+            }
+        })
+        task.resume()
+        session.finishTasksAndInvalidate()
     }
 }
-
-
-

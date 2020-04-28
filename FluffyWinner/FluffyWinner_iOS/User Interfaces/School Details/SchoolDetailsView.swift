@@ -36,7 +36,9 @@ class SchoolDetailsView: NiblessTableView {
     public override func didMoveToWindow() {
         super.didMoveToWindow()
 
-        self.bindViewModel()
+        if self.window != nil {
+            self.bindViewModel()
+        }
     }
 }
 
@@ -45,10 +47,10 @@ extension SchoolDetailsView { // MARK: - Helpers
         self.viewModel.observable.bind { sat in
             let satSection = IndexSet(integer: 1)
             if sat != nil {
-                self.insertSections(satSection, with: .automatic)
-            } else {
-                if self.numberOfSections == 2 {
-                    self.deleteSections(satSection, with: .automatic)
+                if self.numberOfSections == 1 {
+                    self.insertSections(satSection, with: .automatic)
+                } else {
+                    self.reloadSections(satSection, with: .automatic)
                 }
             }
         }

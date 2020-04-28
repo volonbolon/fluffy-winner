@@ -56,6 +56,16 @@ public class SchoolDetailsDatasource: NSObject, UITableViewDataSource {
                                      _ tableView: UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.satCellIdentifier,
                                                  for: indexPath)
+        if let satCell = cell as? SchoolDetailsSatCell {
+            if let sat = self.viewModel.observable.value {
+                let format = NSLocalizedString("Number of Takers: %d", comment: "Number of Takers")
+                let numberOfTakers = String(format: format, sat.numOfSatTestTakers)
+                satCell.numOfSatTestTakersLabel.text = numberOfTakers
+                satCell.setMathAvgScore(sat.mathAvgScore)
+                satCell.setWritingAvgScore(sat.writingAvgScore)
+                satCell.setCriticalReadingAvgScore(sat.criticalReadingAvgScore)
+            }
+        }
         return cell
     }
 

@@ -30,7 +30,6 @@ class SchoolDetailsSatCell: UITableViewCell {
     var satCriticalReadingAvgScoreBar: UIProgressView = {
         let progress = UIProgressView(progressViewStyle: .bar)
         progress.translatesAutoresizingMaskIntoConstraints = false
-        progress.progress = 0.5
 
         return progress
     }()
@@ -47,7 +46,6 @@ class SchoolDetailsSatCell: UITableViewCell {
     var satMathAvgScoreBar: UIProgressView = {
         let progress = UIProgressView(progressViewStyle: .bar)
         progress.translatesAutoresizingMaskIntoConstraints = false
-        progress.progress = 0.5
 
         return progress
     }()
@@ -64,7 +62,6 @@ class SchoolDetailsSatCell: UITableViewCell {
     var satWritingAvgScoreBar: UIProgressView = {
         let progress = UIProgressView(progressViewStyle: .bar)
         progress.translatesAutoresizingMaskIntoConstraints = false
-        progress.progress = 0.5
 
         return progress
     }()
@@ -85,7 +82,28 @@ class SchoolDetailsSatCell: UITableViewCell {
     }
 }
 
-extension SchoolDetailsSatCell { // MARK: Helpers
+extension SchoolDetailsSatCell { // MARK: - Actions
+    private func normalise(score: Int) -> Float {
+        return Float(score) / 800.0
+    }
+
+    public func setMathAvgScore(_ score: Int) {
+        let normalised = self.normalise(score: score)
+        self.satMathAvgScoreBar.progress = normalised
+    }
+
+    public func setCriticalReadingAvgScore(_ score: Int) {
+        let normalised = self.normalise(score: score)
+        self.satCriticalReadingAvgScoreBar.progress = normalised
+    }
+
+    public func setWritingAvgScore(_ score: Int) {
+        let normalised = self.normalise(score: score)
+        self.satWritingAvgScoreBar.progress = normalised
+    }
+}
+
+extension SchoolDetailsSatCell { // MARK: - Helpers
     fileprivate func constructHierarchy() {
         self.contentView.addSubview(self.numOfSatTestTakersLabel)
         self.contentView.addSubview(self.satCriticalReadingAvgScoreLabel)

@@ -12,9 +12,9 @@ public struct Sat: Equatable, Codable {
     public let id: String
     public let name: String
     public let numOfSatTestTakers: Int
-    public let satCriticalReadingAvgScore: Int
-    public let satMathAvgScore: Int
-    public let satWritingAvgScore: Int
+    public let criticalReadingAvgScore: Int
+    public let mathAvgScore: Int
+    public let writingAvgScore: Int
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -34,42 +34,42 @@ public struct Sat: Equatable, Codable {
 
         // satCriticalReadingAvgScore
         let satCriticalReadingAvgScoreString = try container.decode(String.self,
-                                                                    forKey: CodingKeys.satCriticalReadingAvgScore)
+                                                                    forKey: CodingKeys.criticalReadingAvgScore)
         guard let satCriticalReadingAvgScore = Int(satCriticalReadingAvgScoreString) else {
-            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.satCriticalReadingAvgScore],
+            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.criticalReadingAvgScore],
                                                 debugDescription: "Could not parse json key to a Int object")
             throw DecodingError.dataCorrupted(context)
         }
-        self.satCriticalReadingAvgScore = satCriticalReadingAvgScore
+        self.criticalReadingAvgScore = satCriticalReadingAvgScore
 
         // satMathAvgScore
         let satMathAvgScoreString = try container.decode(String.self,
-                                                         forKey: CodingKeys.satMathAvgScore)
+                                                         forKey: CodingKeys.mathAvgScore)
         guard let satMathAvgScore = Int(satMathAvgScoreString) else {
-            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.satMathAvgScore],
+            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.mathAvgScore],
                                                 debugDescription: "Could not parse json key to a Int object")
             throw DecodingError.dataCorrupted(context)
         }
-        self.satMathAvgScore = satMathAvgScore
+        self.mathAvgScore = satMathAvgScore
 
         // satWritingAvgScore
         let satWritingAvgScoreString = try container.decode(String.self,
-                                                            forKey: CodingKeys.satWritingAvgScore)
+                                                            forKey: CodingKeys.writingAvgScore)
         guard let satWritingAvgScore = Int(satWritingAvgScoreString) else {
-            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.satWritingAvgScore],
+            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.writingAvgScore],
                                                 debugDescription: "Could not parse json key to a Int object")
             throw DecodingError.dataCorrupted(context)
         }
-        self.satWritingAvgScore = satWritingAvgScore
+        self.writingAvgScore = satWritingAvgScore
     }
 
     enum CodingKeys: String, CodingKey {
         case id = "dbn"
         case name = "school_name"
         case numOfSatTestTakers = "num_of_sat_test_takers"
-        case satCriticalReadingAvgScore = "sat_critical_reading_avg_score"
-        case satMathAvgScore = "sat_math_avg_score"
-        case satWritingAvgScore = "sat_writing_avg_score"
+        case criticalReadingAvgScore = "sat_critical_reading_avg_score"
+        case mathAvgScore = "sat_math_avg_score"
+        case writingAvgScore = "sat_writing_avg_score"
     }
 }
 

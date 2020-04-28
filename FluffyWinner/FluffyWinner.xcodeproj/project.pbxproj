@@ -44,6 +44,11 @@
 		79DD97132457815F009DDA80 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD97122457815F009DDA80 /* Observable.swift */; };
 		79DD971624579041009DDA80 /* SchoolsUXResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD971524579041009DDA80 /* SchoolsUXResponder.swift */; };
 		79DD971824579298009DDA80 /* SchoolsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD971724579298009DDA80 /* SchoolsViewModel.swift */; };
+		79DD971B2457BCE0009DDA80 /* SchoolDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD971A2457BCE0009DDA80 /* SchoolDetailsViewController.swift */; };
+		79DD971E2457BD8A009DDA80 /* SchoolDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD971D2457BD8A009DDA80 /* SchoolDetailsView.swift */; };
+		79DD97202457C5EA009DDA80 /* SchoolDetailsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD971F2457C5EA009DDA80 /* SchoolDetailsDatasource.swift */; };
+		79DD97222457C63F009DDA80 /* SAT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD97212457C63F009DDA80 /* SAT.swift */; };
+		79DD97242457C903009DDA80 /* SchoolDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD97232457C903009DDA80 /* SchoolDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +185,11 @@
 		79DD97122457815F009DDA80 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		79DD971524579041009DDA80 /* SchoolsUXResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsUXResponder.swift; sourceTree = "<group>"; };
 		79DD971724579298009DDA80 /* SchoolsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsViewModel.swift; sourceTree = "<group>"; };
+		79DD971A2457BCE0009DDA80 /* SchoolDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsViewController.swift; sourceTree = "<group>"; };
+		79DD971D2457BD8A009DDA80 /* SchoolDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsView.swift; sourceTree = "<group>"; };
+		79DD971F2457C5EA009DDA80 /* SchoolDetailsDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsDatasource.swift; sourceTree = "<group>"; };
+		79DD97212457C63F009DDA80 /* SAT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAT.swift; sourceTree = "<group>"; };
+		79DD97232457C903009DDA80 /* SchoolDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +333,7 @@
 		79DD96A124576EF6009DDA80 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				79DD97192457BCAA009DDA80 /* School Details */,
 				79DD96D724577AC4009DDA80 /* Root */,
 				79DD96D22457731C009DDA80 /* Schools */,
 			);
@@ -370,6 +381,7 @@
 		79DD96D32457735C009DDA80 /* User Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				79DD971C2457BD66009DDA80 /* School Details */,
 				79DD96D424577372009DDA80 /* Main */,
 			);
 			path = "User Interfaces";
@@ -444,6 +456,7 @@
 			children = (
 				79DD970224577CE6009DDA80 /* Either.swift */,
 				79DD970424577D05009DDA80 /* School.swift */,
+				79DD97212457C63F009DDA80 /* SAT.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -488,6 +501,24 @@
 				79DD971524579041009DDA80 /* SchoolsUXResponder.swift */,
 			);
 			path = Responders;
+			sourceTree = "<group>";
+		};
+		79DD97192457BCAA009DDA80 /* School Details */ = {
+			isa = PBXGroup;
+			children = (
+				79DD971A2457BCE0009DDA80 /* SchoolDetailsViewController.swift */,
+				79DD971F2457C5EA009DDA80 /* SchoolDetailsDatasource.swift */,
+			);
+			path = "School Details";
+			sourceTree = "<group>";
+		};
+		79DD971C2457BD66009DDA80 /* School Details */ = {
+			isa = PBXGroup;
+			children = (
+				79DD971D2457BD8A009DDA80 /* SchoolDetailsView.swift */,
+				79DD97232457C903009DDA80 /* SchoolDetailsViewModel.swift */,
+			);
+			path = "School Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -821,8 +852,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DD971B2457BCE0009DDA80 /* SchoolDetailsViewController.swift in Sources */,
 				79DD971824579298009DDA80 /* SchoolsViewModel.swift in Sources */,
 				79DD96D62457738A009DDA80 /* SchoolsRootView.swift in Sources */,
+				79DD97242457C903009DDA80 /* SchoolDetailsViewModel.swift in Sources */,
+				79DD971E2457BD8A009DDA80 /* SchoolDetailsView.swift in Sources */,
+				79DD97202457C5EA009DDA80 /* SchoolDetailsDatasource.swift in Sources */,
 				79DD96CF245770C8009DDA80 /* SchoolsViewController.swift in Sources */,
 				79DD96D924577AD9009DDA80 /* RootViewController.swift in Sources */,
 				79DD96A024576E06009DDA80 /* AppDependencyContainer.swift in Sources */,
@@ -865,6 +900,7 @@
 				79DD970524577D05009DDA80 /* School.swift in Sources */,
 				79DD970924577D82009DDA80 /* FakeNetworkAPI.swift in Sources */,
 				79DD97132457815F009DDA80 /* Observable.swift in Sources */,
+				79DD97222457C63F009DDA80 /* SAT.swift in Sources */,
 				79DD97102457811A009DDA80 /* UseCase.swift in Sources */,
 				79DD970E24578100009DDA80 /* RefreshSchoolsUseCase.swift in Sources */,
 				79DD970024577CA6009DDA80 /* NetworkAPI.swift in Sources */,

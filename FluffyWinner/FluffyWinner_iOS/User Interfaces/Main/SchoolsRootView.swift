@@ -130,4 +130,19 @@ extension SchoolsRootView: MKMapViewDelegate {
 
         return annotationView
     }
+
+    public func mapView(_ mapView: MKMapView,
+                        annotationView view: MKAnnotationView,
+                        calloutAccessoryControlTapped control: UIControl) {
+        guard let annotationTitle = view.annotation?.title else {
+            return
+        }
+        if let school = self.schools.first(where: { school -> Bool in
+            return school.name == annotationTitle
+        }) {
+            if let responder = viewModel.uxResponder {
+                responder.showSchoolDetails(school: school)
+            }
+        }
+    }
 }

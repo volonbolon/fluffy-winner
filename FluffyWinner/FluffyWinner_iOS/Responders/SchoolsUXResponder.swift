@@ -12,4 +12,5 @@ import FluffyWinnerKit
 protocol SchoolsUXResponder: class {
     var observable: Observable<[School]> { get }
     func refreshSchools()
+    func showSchoolDetails(school: School)
 }

@@ -15,6 +15,8 @@ public struct School: Equatable, Codable {
     public let overviewParagraph: String
     private let latitude: String
     private let longitude: String
+    public let location: String
+    public let website: String
 
     public var coordinate: CLLocationCoordinate2D? {
         guard let lat = Double(self.latitude),
@@ -33,6 +35,8 @@ public struct School: Equatable, Codable {
         case overviewParagraph = "overview_paragraph"
         case latitude
         case longitude
+        case location
+        case website
     }
 }
 

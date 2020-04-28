@@ -14,13 +14,16 @@ public class SchoolsViewController: NiblessViewController {
     let userInterface: SchoolsRootView
     let refreshSchoolsFactory: RefreshSchoolsUseCaseFactory
     let observable: Observable<[School]>
+    let showSchoolDetailsFactory: (School) -> SchoolDetailsViewController
 
     public init(userInterface: SchoolsRootView,
                 refreshSchoolsFactory: RefreshSchoolsUseCaseFactory,
-                observable: Observable<[School]>) {
+                observable: Observable<[School]>,
+                showSchoolDetailsFactory: @escaping (School) -> SchoolDetailsViewController) {
         self.userInterface = userInterface
         self.observable = observable
         self.refreshSchoolsFactory = refreshSchoolsFactory
+        self.showSchoolDetailsFactory = showSchoolDetailsFactory
 
         super.init()
     }
@@ -47,5 +50,10 @@ extension SchoolsViewController: SchoolsUXResponder {
         let factory = self.refreshSchoolsFactory
         let useCase = factory.makeRefreshSchoolsUseCase(observable: self.observable)
         useCase.start()
+    }
+
+    func showSchoolDetails(school: School) {
+        let viewController = self.showSchoolDetailsFactory(school)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

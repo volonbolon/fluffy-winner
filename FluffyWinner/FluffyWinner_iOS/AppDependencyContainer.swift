@@ -29,8 +29,23 @@ public struct AppDependencyContainer {
         let userInterface = SchoolsRootView(viewModel: viewModel)
         let viewController = SchoolsViewController(userInterface: userInterface,
                                                    refreshSchoolsFactory: self,
-                                                   observable: observable)
+                                                   observable: observable,
+                                                   showSchoolDetailsFactory: self.makeSchoolDetailViewController)
         viewModel.uxResponder = viewController
+        return viewController
+    }
+
+    public func makeSchoolDetailViewController(school: School) -> SchoolDetailsViewController {
+        let observable = Observable<Sat?>(nil)
+        let viewModel = SchoolDetailsViewModel(school: school)
+        let datasource = SchoolDetailsDatasource(infoCellIndentifier: SchoolDetailsView.SchoolDetailsInfoCellIndentifier,
+                                                 satCellIdentifier: SchoolDetailsView.SchoolDetailsSatCellIndentifier,
+                                                 satObservable: observable,
+                                                 viewModel: viewModel)
+        let userInterface = SchoolDetailsView(datasource: datasource, viewModel: viewModel)
+        let viewController = SchoolDetailsViewController(school: school,
+                                                         userInterface: userInterface)
+
         return viewController
     }
 }

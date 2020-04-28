@@ -13,7 +13,7 @@ public struct AppDependencyContainer {
     public init() {}
 
     private var remoteAPI: NetworkAPI {
-        return FakeNetworkAPI()
+        return RemoteNetworkAPI()
     }
 
     public func makeRootViewController() -> RootViewController {

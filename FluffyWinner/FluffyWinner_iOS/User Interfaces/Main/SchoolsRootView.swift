@@ -28,6 +28,14 @@ public class SchoolsRootView: NiblessView {
         return mapView
     }()
 
+    var activityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: .large)
+        activity.hidesWhenStopped = true
+        activity.translatesAutoresizingMaskIntoConstraints = false
+
+        return activity
+    }()
+
     init(viewModel: SchoolsViewModel) {
         self.viewModel = viewModel
 
@@ -63,6 +71,11 @@ public class SchoolsRootView: NiblessView {
 extension SchoolsRootView { // MARK: - Helpers
     fileprivate func bindViewModel() {
         self.viewModel.observable?.bind { schools in
+            if schools.count > 0 {
+                self.activityIndicator.stopAnimating()
+            } else {
+                self.activityIndicator.startAnimating()
+            }
             self.schools = schools
             self.dropPins(schools: self.schools)
         }
@@ -82,10 +95,12 @@ extension SchoolsRootView { // MARK: - Helpers
             }
         }
     }
-    
+
     fileprivate func constructHierarchy() {
         self.addSubview(self.mapView)
         self.mapView.delegate = self
+        self.addSubview(self.activityIndicator)
+        self.bringSubviewToFront(self.activityIndicator)
     }
 
     private func activateMapViewConstraints() {
@@ -102,8 +117,19 @@ extension SchoolsRootView { // MARK: - Helpers
         NSLayoutConstraint.activate(toActivate)
     }
 
+    private func activateActivityIndicatorConstraints() {
+        let xConstraint = self.activityIndicator.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor)
+        let yConstraint = self.activityIndicator.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor)
+        let toActivate = [
+            xConstraint,
+            yConstraint,
+        ]
+        NSLayoutConstraint.activate(toActivate)
+    }
+
     fileprivate func activateConstraints() {
         self.activateMapViewConstraints()
+        self.activateActivityIndicatorConstraints()
     }
 }
 

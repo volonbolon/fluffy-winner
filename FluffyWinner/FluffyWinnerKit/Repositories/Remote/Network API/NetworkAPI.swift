@@ -11,6 +11,7 @@ import Foundation
 public enum NetworkAPIError: Error {
     case connectionError
     case parsingError
+    case unknown
 }
 
 public typealias GetSchoolsCompletionHandler = (Either<NetworkAPIError, [School]>) -> Void

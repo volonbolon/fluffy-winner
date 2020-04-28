@@ -11,6 +11,8 @@
 		79636BF3245855CF002FABD2 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BF2245855CF002FABD2 /* ErrorMessage.swift */; };
 		79636BF5245860E6002FABD2 /* RetrieveSATsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BF4245860E6002FABD2 /* RetrieveSATsUseCase.swift */; };
 		79636BF724586E98002FABD2 /* SchoolDetailsSatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BF624586E98002FABD2 /* SchoolDetailsSatCell.swift */; };
+		79636BFA24589173002FABD2 /* RemoteNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BF924589173002FABD2 /* RemoteNetworkAPI.swift */; };
+		79636BFC2458966A002FABD2 /* Throwable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79636BFB2458966A002FABD2 /* Throwable.swift */; };
 		79DD965B24576D74009DDA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD965A24576D74009DDA80 /* AppDelegate.swift */; };
 		79DD966424576D74009DDA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79DD966324576D74009DDA80 /* Assets.xcassets */; };
 		79DD966724576D74009DDA80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DD966524576D74009DDA80 /* LaunchScreen.storyboard */; };
@@ -149,6 +151,8 @@
 		79636BF2245855CF002FABD2 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		79636BF4245860E6002FABD2 /* RetrieveSATsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveSATsUseCase.swift; sourceTree = "<group>"; };
 		79636BF624586E98002FABD2 /* SchoolDetailsSatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsSatCell.swift; sourceTree = "<group>"; };
+		79636BF924589173002FABD2 /* RemoteNetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNetworkAPI.swift; sourceTree = "<group>"; };
+		79636BFB2458966A002FABD2 /* Throwable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throwable.swift; sourceTree = "<group>"; };
 		79DD965724576D74009DDA80 /* FluffyWinner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluffyWinner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DD965A24576D74009DDA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79DD966324576D74009DDA80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -272,6 +276,14 @@
 				79636BF024585558002FABD2 /* ViewController+ErrorPresentation.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		79636BF824589158002FABD2 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				79636BF924589173002FABD2 /* RemoteNetworkAPI.swift */,
+			);
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		79DD964E24576D74009DDA80 = {
@@ -475,6 +487,7 @@
 				79DD970424577D05009DDA80 /* School.swift */,
 				79DD97212457C63F009DDA80 /* SAT.swift */,
 				79636BF2245855CF002FABD2 /* ErrorMessage.swift */,
+				79636BFB2458966A002FABD2 /* Throwable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -482,6 +495,7 @@
 		79DD970624577D5E009DDA80 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				79636BF824589158002FABD2 /* Remote */,
 				79DD970724577D69009DDA80 /* Fake */,
 			);
 			path = Implementations;
@@ -926,7 +940,9 @@
 				79DD97222457C63F009DDA80 /* SAT.swift in Sources */,
 				79DD97102457811A009DDA80 /* UseCase.swift in Sources */,
 				79DD970E24578100009DDA80 /* RefreshSchoolsUseCase.swift in Sources */,
+				79636BFA24589173002FABD2 /* RemoteNetworkAPI.swift in Sources */,
 				79636BF5245860E6002FABD2 /* RetrieveSATsUseCase.swift in Sources */,
+				79636BFC2458966A002FABD2 /* Throwable.swift in Sources */,
 				79DD970024577CA6009DDA80 /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
